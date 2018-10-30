@@ -3,7 +3,8 @@ package lru;
 import java.util.Objects;
 
 /**
- * 基于双向链表实现的 LRU 缓存
+ * 基于双向链表实现的 LRU 缓存，使用自定义类型作为键时，
+ * 确保键的类型已经正确的实现了 equals 方法，否则无法正确的通过键来得到对应的值
  * @author StarkZhidian
  *
  * @param <K> 键的类型
@@ -206,15 +207,15 @@ public class LRU<K, V> {
     }
 
     public static void main(String[] args) {
-        LRU<String, String> lru;
+        LRU<Integer, String> lru;
         for (int x = 1; x < 12; x ++) {
-            lru = new LRU<String, String>(x);
+            lru = new LRU<Integer, String>(x);
             for (int i = 0; i < 10; i++) {
-                lru.add(String.valueOf(i), String.valueOf(i));
+                lru.add(i, String.valueOf(i));
                 System.out.println(lru);
             }
             for (int i = 9; i >= 0; i--) {
-                lru.add(String.valueOf(i), String.valueOf(i));
+                lru.add(i, String.valueOf(i));
                 System.out.println(lru);
             }
             lru.clear();
