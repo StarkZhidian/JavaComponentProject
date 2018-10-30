@@ -49,7 +49,7 @@ public class LRU<K, V> {
                     curNode.next = head;
                     head = curNode;
                 }
-                return (V) curNode.value;
+                return curNode.value;
             }
             prev = curNode;
             curNode = curNode.next;
