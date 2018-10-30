@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405d04f9-cfcd-4dd3-9f09-41ffb728f1ed" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" afterDir="false" />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,6 +77,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="264">
               <caret line="162" column="9" lean-forward="true" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
               <folding>
@@ -94,6 +99,31 @@
                 <element signature="e#3930#3931#0" expanded="true" />
                 <element signature="e#3991#3992#0" expanded="true" />
                 <element signature="e#4634#4650#0" expanded="true" />
+=======
+            <state relative-caret-position="281">
+              <caret line="161" column="19" lean-forward="true" selection-start-line="161" selection-start-column="19" selection-end-line="161" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2110#2111#0" expanded="true" />
+                <element signature="e#2197#2198#0" expanded="true" />
+                <element signature="e#2636#2637#0" expanded="true" />
+                <element signature="e#2680#2681#0" expanded="true" />
+                <element signature="e#2719#2720#0" expanded="true" />
+                <element signature="e#2776#2777#0" expanded="true" />
+                <element signature="e#2828#2829#0" expanded="true" />
+                <element signature="e#2868#2869#0" expanded="true" />
+                <element signature="e#2914#2915#0" expanded="true" />
+                <element signature="e#2984#2985#0" expanded="true" />
+                <element signature="class#Element#0;class#LRU_K#0" />
+                <element signature="e#3236#3237#0" expanded="true" />
+                <element signature="e#3270#3271#0" expanded="true" />
+                <element signature="e#3319#3320#0" expanded="true" />
+                <element signature="e#3355#3356#0" expanded="true" />
+                <element signature="e#3573#3574#0" expanded="true" />
+                <element signature="e#3634#3635#0" expanded="true" />
+                <element signature="e#4672#4689#0" expanded="true" />
+                <marker date="1540890295144" expanded="true" signature="5193:5299" ph="..." />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
               </folding>
             </state>
           </provider>
@@ -162,8 +192,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="197">
               <caret line="609" column="13" selection-start-line="609" selection-start-column="13" selection-end-line="609" selection-end-column="13" />
+=======
+            <state relative-caret-position="217">
+              <caret line="524" column="16" selection-start-line="524" selection-start-column="16" selection-end-line="524" selection-end-column="16" />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
               <folding>
                 <element signature="e#19072#19073#0" expanded="true" />
                 <element signature="e#19130#19131#0" expanded="true" />
@@ -357,11 +392,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="13891000" />
+=======
+    <option name="totallyTimeSpent" value="13866000" />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.15688367" />
       <window_info id="Structure" order="1" sideWeight="0.5007825" side_tool="true" visible="true" weight="0.15688367" />
       <window_info id="Capture Tool" order="2" />
@@ -369,6 +409,20 @@
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+=======
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4985207" visible="true" weight="0.15688367" />
+      <window_info id="Structure" order="1" sideWeight="0.50147927" side_tool="true" visible="true" weight="0.15688367" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32914045" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28991598" />
@@ -491,8 +545,13 @@
     </entry>
     <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="197">
           <caret line="609" column="13" selection-start-line="609" selection-start-column="13" selection-end-line="609" selection-end-column="13" />
+=======
+        <state relative-caret-position="217">
+          <caret line="524" column="16" selection-start-line="524" selection-start-column="16" selection-end-line="524" selection-end-column="16" />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
           <folding>
             <element signature="e#19072#19073#0" expanded="true" />
             <element signature="e#19130#19131#0" expanded="true" />
@@ -508,6 +567,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="264">
           <caret line="162" column="9" lean-forward="true" selection-start-line="162" selection-start-column="9" selection-end-line="162" selection-end-column="9" />
           <folding>
@@ -529,6 +589,31 @@
             <element signature="e#3930#3931#0" expanded="true" />
             <element signature="e#3991#3992#0" expanded="true" />
             <element signature="e#4634#4650#0" expanded="true" />
+=======
+        <state relative-caret-position="281">
+          <caret line="161" column="19" lean-forward="true" selection-start-line="161" selection-start-column="19" selection-end-line="161" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="e#2197#2198#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="true" />
+            <element signature="e#2680#2681#0" expanded="true" />
+            <element signature="e#2719#2720#0" expanded="true" />
+            <element signature="e#2776#2777#0" expanded="true" />
+            <element signature="e#2828#2829#0" expanded="true" />
+            <element signature="e#2868#2869#0" expanded="true" />
+            <element signature="e#2914#2915#0" expanded="true" />
+            <element signature="e#2984#2985#0" expanded="true" />
+            <element signature="class#Element#0;class#LRU_K#0" />
+            <element signature="e#3236#3237#0" expanded="true" />
+            <element signature="e#3270#3271#0" expanded="true" />
+            <element signature="e#3319#3320#0" expanded="true" />
+            <element signature="e#3355#3356#0" expanded="true" />
+            <element signature="e#3573#3574#0" expanded="true" />
+            <element signature="e#3634#3635#0" expanded="true" />
+            <element signature="e#4672#4689#0" expanded="true" />
+            <marker date="1540890295144" expanded="true" signature="5193:5299" ph="..." />
+>>>>>>> 65e8049cb36fc9e0a14598aa1ceb396cee2c7a96
           </folding>
         </state>
       </provider>

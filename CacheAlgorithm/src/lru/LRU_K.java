@@ -49,7 +49,7 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
 
         @Override
         protected boolean removeEldestEntry(Map.Entry<Map.Entry<K, V>, Integer> eldest) {
-            return size() >= maxCapacity;
+            return size() > maxCapacity;
         }
 
         public Integer add(Map.Entry<K, V> element) {
@@ -87,9 +87,10 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
         cacheQueue = new CacheQueue(cacheQueueCapacity, k);
     }
 
+    // 插入元素之后如果现有元素个数大于允许最大元素数，移除最老的元素
     @Override
     protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-        return size() >= maxCapacity;
+        return size() > maxCapacity;
     }
 
     public void add(K key, V value) {
@@ -154,19 +155,24 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
     }
 
     public static void main(String[] args) {
-        LRU_K<String, String> lru_k = new LRU_K<String, String>();
+        LRU_K<Integer, String> lru_k = new LRU_K<Integer, String>(3, 3, 9);
         for (int i = 0; i < 10; i++) {
-            lru_k.add(String.valueOf(i), String.valueOf(i));
+            lru_k.add(i, String.valueOf(i));
         }
-        for (int i = 0; i < 10; i++) {
-            lru_k.add(String.valueOf(i), String.valueOf(i));
+        for (int i = 9; i >= 0; i--) {
+            lru_k.add(i, String.valueOf(i));
+        }
+        for (int i = 8; i >= 0; i--) {
+            lru_k.add(i, String.valueOf(i));
         }
         // !! 不建议采用的遍历元素方式
 //        for (Object key : lru_k.keySet()) {
 //            System.out.println(key + ", " + lru_k.get(key));
 //        }
-        for (Map.Entry entry : lru_k.entrySet()) {
-            System.out.println(entry.getKey() + ", " + entry.getValue());
-        }
+        // 建议采用的元素遍历方式
+//        for (Map.Entry entry : lru_k.entrySet()) {
+//            System.out.println(entry.getKey() + ", " + entry.getValue());
+//        }
+        System.out.println(lru_k);
     }
 }
