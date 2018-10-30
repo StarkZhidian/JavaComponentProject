@@ -34,7 +34,7 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
     protected CacheQueue cacheQueue;
 
     /**
-     * 储存每一个键值对出现次数信息的缓存队列，必要的时候将键值对元素存入 LRU 队列
+     * 储存每一个键值对出现次数信息的缓存队列，必要的时候(出现次数 >= k)将键值对元素存入 LRU 队列
      */
     class CacheQueue extends LinkedHashMap<Map.Entry<K, V>, Integer> {
 
