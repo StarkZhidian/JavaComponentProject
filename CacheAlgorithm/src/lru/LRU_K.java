@@ -101,6 +101,26 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
         cacheQueue.k = threshold;
     }
 
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public void setMaxCapacity(int maxCapacity) {
+        if (maxCapacity >= this.maxCapacity) {
+            this.maxCapacity = maxCapacity;
+        } else {
+            throw new IllegalArgumentException("The max capacity can not shrink!");
+        }
+    }
+
+    public void setCacheMaxCapacity(int cacheMaxCapacity) {
+        if (cacheQueue.maxCapacity >= cacheMaxCapacity) {
+            this.cacheQueue.maxCapacity = cacheMaxCapacity;
+        } else {
+            throw new IllegalArgumentException("The max capacity of cache queue can not shrink!");
+        }
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\n" + cacheQueue.toString();
@@ -148,9 +168,10 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> {
 
         @Override
         public int hashCode() {
-            int h;
-            return ((key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16)) +
-                    ((value == null) ? 0 : (h = value.hashCode()) ^ (h >>> 16));
+            int result = 1;
+            int prime = 31;
+            return prime * (prime * result + (key == null ? 0 : key.hashCode())) +
+                    (value == null ? 0 : value.hashCode());
         }
     }
 
