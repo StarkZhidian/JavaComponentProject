@@ -12,9 +12,10 @@ import java.util.Set;
  * Create by StarkZhidian on 30/10/2018
  * LFU 算法的实现：
  * 它是基于 “如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小” 的思路。
- * 即数据依据访问次数降序排列（排序通过双向链表实现），访问通过自定义 Map 实现
- *
+ * 数据依据访问次数降序排列，元素排序和遍历通过双向链表实现，
+ * 随机访问（get）通过自定义 Map 实现，通过连地址法（单向链表）来处理储存的元素的 key 的 hash 值出现冲突的情况，
  */
+@SuppressWarnings({"unchecked"})
 public class LFUCache<K, V> {
     private static final boolean DEBUG = true;
     private static final int DEFAULT_MAX_CAPACITY = 32;
@@ -57,6 +58,7 @@ public class LFUCache<K, V> {
      */
     static class ElementHashMap<K, V> extends AbstractMap<K, V> {
         static final float DEFAULT_FACTOR = 0.75F;
+        static final int MAX_CAPACITY = 1 << 30;
         int maxCapacity;
         int size;
         Element<K, V>[] tables;
@@ -71,7 +73,7 @@ public class LFUCache<K, V> {
             }
             this.maxCapacity = maxCapacity;
             elementVisitTimes = new HashMap<K, Integer>(maxCapacity);
-            tables = new Element[(int) (maxCapacity / DEFAULT_FACTOR)];
+            tables = (Element<K, V>[]) new Element[(int) (maxCapacity / DEFAULT_FACTOR)];
         }
 
         public int size() {
@@ -85,7 +87,7 @@ public class LFUCache<K, V> {
 
         @Override
         public V get(Object key) {
-            int hash = hash(key);
+            int hash = hash((K) key, tables.length);
             Element<K, V> e;
             Integer visitTimes = elementVisitTimes.get(key);
             if (visitTimes == null) {
@@ -99,7 +101,7 @@ public class LFUCache<K, V> {
 
         @Override
         public V put(K key, V value) {
-            int hash = hash(key);
+            int hash = hash(key, tables.length);
             Element<K, V> node = getElement(hash, key);
             V oldValue = null;
             // 已有节点
@@ -115,13 +117,17 @@ public class LFUCache<K, V> {
                 oldValue = node.value;
                 node.value = value;
             } else {
-                node = new Element<>(key, value, null, null, null);
+                node = new Element<>(key, value, hash, null, null, null);
                 elementVisitTimes.put(key, 1);
                 // 容量已满，淘汰尾节点
                 if (size >= maxCapacity) {
                     removeLast();
                 } else {
                     size++;
+                    // 如果当前的节点数达到一定阈值，那么进行扩容
+                    if (size >= tables.length * DEFAULT_FACTOR) {
+                        resize();
+                    }
                 }
                 // 插入新节点
                 addElement(hash, node);
@@ -132,10 +138,35 @@ public class LFUCache<K, V> {
             return oldValue;
         }
 
+        public void setMaxCapacity(int newMaxCapacity) {
+            if (newMaxCapacity < this.maxCapacity) {
+                throw new IllegalArgumentException("The maxCapacity field can not shrink!");
+            }
+            this.maxCapacity = newMaxCapacity;
+        }
+
+        void resize() {
+            int newCap = tables.length << 1;
+            if (newCap > MAX_CAPACITY || newCap <= 0) {
+                newCap = MAX_CAPACITY;
+            }
+            if (newCap > tables.length) {
+                Element<K, V>[] newTab = (Element<K, V>[]) new Element[newCap];
+                for (Element<K, V> ele : tables) {
+                    if (ele != null) {
+                        newTab[ele.hash = hash(ele.key, newCap)] = ele;
+                    }
+                }
+                tables = newTab;
+            } else if (DEBUG) {
+                System.out.println("The size of current table is maximum capacity!");
+            }
+        }
+
         void removeLast() {
             if (tail != null) {
                 Element<K, V> ele, elePrev = null;
-                int hash = hash(tail.key);
+                int hash = hash(tail.key, tables.length);
                 if ((ele = tables[hash]) != null) {
                     if (Objects.equals(ele.key, tables[hash].key)) {
                         tables[hash].hashConflictNext = null;
@@ -175,7 +206,7 @@ public class LFUCache<K, V> {
                 if (DEBUG) {
                     throw new IllegalStateException("removeLast: tail reference is null!");
                 } else {
-                    System.out.println("removeLast: something was wrong!");
+                    System.out.println("removeLast: tail reference is null!");
                 }
             }
         }
@@ -257,9 +288,9 @@ public class LFUCache<K, V> {
             return ele;
         }
 
-        int hash(Object key) {
-            int h;
-            return ((key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16)) % tables.length;
+        int hash(K key, int modLength) {
+            int h = ((key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16));
+            return modLength > 0 ? h % modLength : h;
         }
 
         @Override
@@ -273,6 +304,7 @@ public class LFUCache<K, V> {
          * @param <V>
          */
         static class Element<K, V> implements Map.Entry<K, V> {
+            int hash;
             K key;
             V value;
             Element<K, V> prev;
@@ -282,10 +314,11 @@ public class LFUCache<K, V> {
 
             Element() {}
 
-            Element(K key, V value, Element<K, V> prev, Element<K, V> next,
+            Element(K key, V value, int hash, Element<K, V> prev, Element<K, V> next,
                            Element<K, V> hashConflictNext) {
                 this.key = key;
                 this.value = value;
+                this.hash = hash;
                 this.prev = prev;
                 this.next = next;
                 this.hashConflictNext = hashConflictNext;
