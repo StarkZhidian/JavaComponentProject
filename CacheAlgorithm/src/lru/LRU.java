@@ -2,31 +2,37 @@ package lru;
 
 import java.util.Objects;
 
+import base.GetElementListener;
+
 /**
  * 基于双向链表实现的 LRU 缓存，使用自定义类型作为键时，
- * 确保键的类型已经正确的实现了 equals 方法，否则无法正确的通过键来得到对应的值
+ * 确保键的类型已经正确的实现了 equals 和 hashCode 方法，否则无法正确的通过键来得到对应的值
  * @author StarkZhidian
  *
  * @param <K> 键的类型
  * @param <V> 值的类型
  */
-public class LRU<K, V> {
+public class LRU<K, V> implements GetElementListener<K, V> {
 
     private static final int DEFAULT_MAX_CAPACITY = 32;
     private int maxCapacity;
-    private int count;
+    private int size;
     private Element<K, V> head;
     private Element<K, V> tail;
+    private GetElementListener<K, V> getElementListener;
+    private int hitCount; // get 方法中元素命中次数
+    private int missCount; // get 方法中元素未命中次数
 
     public LRU() {
-        maxCapacity = DEFAULT_MAX_CAPACITY;
+        this(DEFAULT_MAX_CAPACITY, null);
     }
 
-    public LRU(int maxCapacity) {
+    public LRU(int maxCapacity, GetElementListener<K, V> getElementListener) {
         if (maxCapacity <= 0) {
             throw new IllegalArgumentException("maxCapacity must greater than zero!");
         }
         this.maxCapacity = maxCapacity;
+        this.getElementListener = getElementListener;
     }
 
     public Element<K, V> getHead() {
@@ -35,6 +41,23 @@ public class LRU<K, V> {
 
     public Element<K, V> getTail() {
         return tail;
+    }
+
+    public void setGetElementListener(GetElementListener<K, V> getElementListener) {
+        this.getElementListener = getElementListener;
+    }
+
+    public int getHitCount() {
+        return hitCount;
+    }
+
+    public int getMissCount() {
+        return missCount;
+    }
+
+    public float getHitPercent() {
+        int count = hitCount + missCount;
+        return count == 0 ? 0 : (float) hitCount / (count);
     }
 
     public V get(K key) {
@@ -115,10 +138,10 @@ public class LRU<K, V> {
         // 没命中，则插入一个新节点
         Element<K, V> newHead = new Element<K, V>(key, value);
         // 容量已满，淘汰尾节点
-        if (count >= maxCapacity) {
+        if (size >= maxCapacity) {
             oldValue = removeLast();
         } else { // 容量未满，插入节点，节点数加一
-            count++;
+            size++;
         }
         // 新节点插入链表头
         insertHead(newHead);
@@ -126,11 +149,11 @@ public class LRU<K, V> {
     }
 
     public int size() {
-        return count;
+        return size;
     }
 
     public void clear() {
-        count = 0;
+        size = 0;
         head = tail = null;
         System.gc();
     }
@@ -163,13 +186,29 @@ public class LRU<K, V> {
         tail = (tail == null ? head : tail);
     }
 
+    @Override
+    public void onHit(K key, V value) {
+        hitCount++;
+        if (getElementListener != null) {
+            getElementListener.onHit(key, value);
+        }
+    }
+
+    @Override
+    public void onMiss(K key) {
+        missCount++;
+        if (getElementListener != null) {
+            getElementListener.onMiss(key);
+        }
+    }
+
     /**
      * 描述 LRU 算法中链表元素的类
      * @author StarkZhidian
      * @param <K> 键的类型
      * @param <V> 值的类型
      */
-    public static class Element<K, V> {
+    static class Element<K, V> {
         K key;
         V value;
         Element<K, V> prev;
@@ -209,7 +248,7 @@ public class LRU<K, V> {
     public static void main(String[] args) {
         LRU<Integer, String> lru;
         for (int x = 1; x < 12; x ++) {
-            lru = new LRU<Integer, String>(x);
+            lru = new LRU<Integer, String>(x, null);
             for (int i = 0; i < 10; i++) {
                 lru.add(i, String.valueOf(i));
                 System.out.println(lru);

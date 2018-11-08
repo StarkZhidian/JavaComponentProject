@@ -2,18 +2,22 @@ package lfu;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import base.GetElementListener;
+
 /**
  * Create by StarkZhidian on 30/10/2018
  * LFU 算法的实现：
  * 它是基于 “如果一个数据在最近一段时间内使用次数很少，那么在将来一段时间内被使用的可能性也很小” 的思路。
- * 数据依据访问次数降序排列，元素排序和遍历通过双向链表实现，
- * 随机访问（get）通过自定义 Map 实现，通过连地址法（单向链表）来处理储存的元素的 key 的 hash 值出现冲突的情况，
+ * 数据依据访问次数降序排列，元素排序和遍历 {@link #entrySet()} 通过双向链表实现，
+ * 随机访问 {@link #get(Object)} 通过自定义 Map 实现，通过连地址法（单向链表）来处理储存的元素的 key 的 hash 值出现冲突的情况，
+ * 确保键的类型已经正确的实现了 equals 和 hashCode 方法，否则无法正确的通过键来得到对应的值
  */
 @SuppressWarnings({"unchecked"})
 public class LFUCache<K, V> {
@@ -26,7 +30,31 @@ public class LFUCache<K, V> {
     }
 
     public LFUCache(int maxCapacity) {
-        elementsMap = new ElementHashMap<>(maxCapacity);
+        this(maxCapacity, null);
+    }
+
+    public LFUCache(int maxCapacity, GetElementListener<K, V> getElementListener) {
+        if (maxCapacity <= 0) {
+            throw new IllegalArgumentException("The argument maxCapacity must greater than zero!");
+        }
+        elementsMap = new ElementHashMap<>(maxCapacity, getElementListener);
+    }
+
+    public void setGetElementListener(GetElementListener<K, V> getElementListener) {
+        elementsMap.setGetElementListener(getElementListener);
+    }
+
+    public int getMissCount() {
+        return elementsMap.missCount;
+    }
+
+    public int getHitCount() {
+        return elementsMap.hitCount;
+    }
+
+    // 获取缓存中元素的命中比例
+    public float getHitPercent() {
+        return elementsMap.getHitPercent();
     }
 
     public V get(K key) {
@@ -51,12 +79,12 @@ public class LFUCache<K, V> {
     }
 
     /**
-     * 储存和散列元素的 Map，tables 数组元素储存的是双向链表的节点，整个双向链表层通过访问频率降序，
-     * 当容量已满时淘汰尾节点
+     * 储存和散列元素的 Map，tables 数组元素储存的是双向链表的节点，整个双向链表层通过访问频率降序排列，
+     * 当容量已满时淘汰尾节点，元素之间的 hash 冲突通过单向链表来处理
      * @param <K> 键的类型
      * @param <V> 值的类型
      */
-    static class ElementHashMap<K, V> extends AbstractMap<K, V> {
+    static class ElementHashMap<K, V> extends AbstractMap<K, V> implements GetElementListener<K, V> {
         static final float DEFAULT_FACTOR = 0.75F;
         static final int MAX_CAPACITY = 1 << 30;
         int maxCapacity;
@@ -64,16 +92,38 @@ public class LFUCache<K, V> {
         Element<K, V>[] tables;
         Element<K, V> head;
         Element<K, V> tail;
-        HashMap<K, Integer> elementVisitTimes;
+        HashMap<K, Integer> elementVisitTimes; // 记录当前 Cache 中元素访问次数的 map
         EntrySet entrySet;
+        private GetElementListener<K, V> getElementListener;
+        private int hitCount; // get 元素命中的次数
+        private int missCount; // get 元素没有命中的次数
 
-        ElementHashMap(int maxCapacity) {
+        ElementHashMap(int maxCapacity, GetElementListener<K, V> getElementListener) {
             if (maxCapacity <= 0) {
                 throw new IllegalArgumentException("The argument maxCapacity must greater than zero!");
             }
             this.maxCapacity = maxCapacity;
             elementVisitTimes = new HashMap<K, Integer>(maxCapacity);
             tables = (Element<K, V>[]) new Element[(int) (maxCapacity / DEFAULT_FACTOR)];
+            this.getElementListener = getElementListener;
+        }
+
+        public void setGetElementListener(GetElementListener<K, V> getElementListener) {
+            this.getElementListener = getElementListener;
+        }
+
+        public int getMissCount() {
+            return missCount;
+        }
+
+        public int getHitCount() {
+            return hitCount;
+        }
+
+        // 获取缓存中元素的命中比例
+        public float getHitPercent() {
+            int count = hitCount + missCount;
+            return count == 0 ? 0 : (float) hitCount / (count);
         }
 
         public int size() {
@@ -90,12 +140,27 @@ public class LFUCache<K, V> {
             int hash = hash((K) key, tables.length);
             Element<K, V> e;
             Integer visitTimes = elementVisitTimes.get(key);
+            // 元素未命中
             if (visitTimes == null) {
+                onMiss((K) key);
                 return null;
-            } else {
+            } else { // 元素命中
+                Element<K, V> ele = getElement(hash, key);
+                if (ele != null) {
+                    onHit(ele.key, ele.value);
+                } else {
+                    String errMessage = "Get element: can not get element for key: "
+                            + key + ", hash: " + hash + ", current table: " + this + "\n";
+                    if (DEBUG) {
+                        throw new IllegalStateException(errMessage);
+                    } else {
+                        System.err.println(errMessage);
+                    }
+                    onMiss((K) key);
+                }
                 // 访问次数 + 1，并重新移动元素
                 elementVisitTimes.put((K) key, visitTimes + 1);
-                return (e = moveElement(getElement(hash, key))) == null ? null : e.value;
+                return (e = moveElement(ele)) == null ? null : e.value;
             }
         }
 
@@ -116,7 +181,7 @@ public class LFUCache<K, V> {
                 elementVisitTimes.put(key, elementVisitTimes.get(key) + 1);
                 oldValue = node.value;
                 node.value = value;
-            } else {
+            } else { // 没有找到节点，插入新节点
                 node = new Element<>(key, value, hash, null, null, null);
                 elementVisitTimes.put(key, 1);
                 // 容量已满，淘汰尾节点
@@ -124,17 +189,16 @@ public class LFUCache<K, V> {
                     removeLast();
                 } else {
                     size++;
-                    // 如果当前的节点数达到一定阈值，那么进行扩容
-                    if (size >= tables.length * DEFAULT_FACTOR) {
-                        resize();
-                    }
                 }
                 // 插入新节点
                 addElement(hash, node);
+                // 如果当前的节点数达到一定阈值，那么进行扩容
+                if (size >= tables.length * DEFAULT_FACTOR) {
+                    resize();
+                }
             }
             // 移动节点至双向链表中合适的位置
             moveElement(node);
-            display();
             return oldValue;
         }
 
@@ -146,15 +210,23 @@ public class LFUCache<K, V> {
         }
 
         void resize() {
-            int newCap = tables.length << 1;
+            int newCap = tables.length * 2;
             if (newCap > MAX_CAPACITY || newCap <= 0) {
                 newCap = MAX_CAPACITY;
             }
             if (newCap > tables.length) {
                 Element<K, V>[] newTab = (Element<K, V>[]) new Element[newCap];
+                Element<K, V> firstTemp = null;
                 for (Element<K, V> ele : tables) {
                     if (ele != null) {
+                        firstTemp = ele;
                         newTab[ele.hash = hash(ele.key, newCap)] = ele;
+                        ele = ele.hashConflictNext;
+                    }
+                    // 处理 hash 冲突
+                    while (ele != null) {
+                        ele.hash = firstTemp.hash;
+                        ele = ele.hashConflictNext;
                     }
                 }
                 tables = newTab;
@@ -166,11 +238,10 @@ public class LFUCache<K, V> {
         void removeLast() {
             if (tail != null) {
                 Element<K, V> ele, elePrev = null;
-                int hash = hash(tail.key, tables.length);
-                if ((ele = tables[hash]) != null) {
-                    if (Objects.equals(ele.key, tables[hash].key)) {
-                        tables[hash].hashConflictNext = null;
-                        tables[hash] = ele.hashConflictNext;
+                if ((ele = tables[tail.hash]) != null) {
+                    if (Objects.equals(ele.key, tables[tail.hash].key)) {
+                        tables[tail.hash].hashConflictNext = null;
+                        tables[tail.hash] = ele.hashConflictNext;
                     } else {
                         // 处理 elementMap 中的冲突
                         do {
@@ -190,7 +261,7 @@ public class LFUCache<K, V> {
                     if (DEBUG) {
                         throw new IllegalStateException("removeLast: can not get count of tail!");
                     } else {
-                        System.out.println("Something was wrong!");
+                        System.out.println("Something was wrong when remove tail element!");
                     }
                 }
                 // 如果只有一个节点，那么 head 赋 null
@@ -293,6 +364,23 @@ public class LFUCache<K, V> {
             return modLength > 0 ? h % modLength : h;
         }
 
+
+        @Override
+        public void onHit(K key, V value) {
+            hitCount++;
+            if (getElementListener != null) {
+                getElementListener.onHit(key, value);
+            }
+        }
+
+        @Override
+        public void onMiss(K key) {
+            missCount++;
+            if (getElementListener != null) {
+                getElementListener.onMiss(key);
+            }
+        }
+
         @Override
         public Set<Entry<K, V>> entrySet() {
             return entrySet == null ? (entrySet = new EntrySet()) : entrySet;
@@ -300,16 +388,17 @@ public class LFUCache<K, V> {
 
         /**
          * 描述 ElementMap 储存的元素的类，通过链地址法处理处理 hash 冲突
-         * @param <K>
-         * @param <V>
+         * @param <K> 键的类型
+         * @param <V> 值的类型
          */
         static class Element<K, V> implements Map.Entry<K, V> {
-            int hash;
+            int hash; // 键的 hash 值
             K key;
             V value;
             Element<K, V> prev;
             Element<K, V> next;
-            // 采用
+            // 采用单链表处理 hash 冲突，如果当前元素的 hash 值有冲突，
+            // 那么 hashConflictNext 指向同 hash 值的下一个元素
             Element<K, V> hashConflictNext;
 
             Element() {}
@@ -358,6 +447,11 @@ public class LFUCache<K, V> {
                 return super.equals(obj);
             }
 
+            @Override
+            public String toString() {
+                return "{hash: " + hash + ", key: " + key + ", value: " +
+                        value + ", conflictNext: " + hashConflictNext + "}\n";
+            }
         }
 
         class EntrySet extends AbstractSet<Entry<K, V>> {
@@ -422,7 +516,12 @@ public class LFUCache<K, V> {
             lfuCache = new LFUCache<>(i);
             for (int j = 0; j < 10; j++) {
                 lfuCache.put(String.valueOf(j), String.valueOf(j));
+                lfuCache.elementsMap.display();
             }
+            for (int j = 0; j < 10; j++) {
+                lfuCache.get(String.valueOf(j));
+            }
+            System.out.println(lfuCache.getHitPercent());
         }
     }
 
