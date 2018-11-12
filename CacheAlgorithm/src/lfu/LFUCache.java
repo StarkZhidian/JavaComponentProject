@@ -102,9 +102,12 @@ public class LFUCache<K, V> {
             if (maxCapacity <= 0) {
                 throw new IllegalArgumentException("The argument maxCapacity must greater than zero!");
             }
+            if (maxCapacity > MAX_CAPACITY) {
+                maxCapacity = MAX_CAPACITY;
+            }
             this.maxCapacity = maxCapacity;
             elementVisitTimes = new HashMap<K, Integer>(maxCapacity);
-            tables = (Element<K, V>[]) new Element[(int) (maxCapacity / DEFAULT_FACTOR)];
+            tables = (Element<K, V>[]) new Element[tableSizeFor(maxCapacity)];
             this.getElementListener = getElementListener;
         }
 
@@ -209,8 +212,23 @@ public class LFUCache<K, V> {
             this.maxCapacity = newMaxCapacity;
         }
 
+        /**
+         * 获取第一个不小于给定容量的 2 的次幂值
+         * @param cap 给定的容量
+         * @return 第一个不小于给定容量的 2 的次幂值
+         */
+        static int tableSizeFor(int cap) {
+            int n = cap - 1;
+            n |= n >>> 1;
+            n |= n >>> 2;
+            n |= n >>> 4;
+            n |= n >>> 8;
+            n |= n >>> 16;
+            return (n < 0) ? 1 : (n >= MAX_CAPACITY) ? MAX_CAPACITY : n + 1;
+        }
+
         void resize() {
-            int newCap = tables.length * 2;
+            int newCap = tables.length << 1;
             if (newCap > MAX_CAPACITY || newCap <= 0) {
                 newCap = MAX_CAPACITY;
             }
@@ -359,9 +377,17 @@ public class LFUCache<K, V> {
             return ele;
         }
 
+        // 求出某个 Key 对象的 hash 值，如果 modLength 大于 0，那么 modLength 必须是 2 的次幂
         int hash(K key, int modLength) {
             int h = ((key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16));
-            return modLength > 0 ? h % modLength : h;
+            if (modLength <= 0) {
+                return h;
+            } else {
+                if (DEBUG && (modLength & (modLength - 1)) != 0) {
+                    throw new IllegalStateException("hash method: argument modLength must be the power of 2!");
+                }
+                return h & (modLength - 1);
+            }
         }
 
 
