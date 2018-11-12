@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405d04f9-cfcd-4dd3-9f09-41ffb728f1ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,13 +46,13 @@
         <counts>
           <entry key="dummy" value="38" />
           <entry key="gitignore" value="22" />
-          <entry key="java" value="19304" />
+          <entry key="java" value="19435" />
           <entry key="txt" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="19304" />
+          <entry key="JAVA" value="19435" />
           <entry key="PLAIN_TEXT" value="108" />
         </counts>
       </usages-collector>
@@ -68,10 +67,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="89" column="46" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
+            <state relative-caret-position="375">
+              <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#929#930#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -302,7 +303,7 @@
     <property name="SearchEverywhereHistoryKey" value="HashMap.java&#9;FILE&#9;jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java&#10;Map&#9;FILE&#9;jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/Map.java&#10;WeakHashM&#9;PSI&#9;JAVA://java.util.WeakHashMap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541988816497" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541989337357" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -424,7 +425,7 @@
       <workItem from="1541585371690" duration="6576000" />
       <workItem from="1541639644352" duration="8572000" />
       <workItem from="1541829574235" duration="783000" />
-      <workItem from="1541986617057" duration="2199000" />
+      <workItem from="1541986617057" duration="2720000" />
     </task>
     <task id="LOCAL-00001" summary="add maxCapacity filed API for LRU-K algorithm">
       <created>1540990684826</created>
@@ -437,14 +438,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80578000" />
+    <option name="totallyTimeSpent" value="81099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4832827" visible="true" weight="0.17449306" />
-      <window_info id="Structure" order="1" sideWeight="0.5167173" side_tool="true" visible="true" weight="0.17449306" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4828125" visible="true" weight="0.17449306" />
+      <window_info id="Structure" order="1" sideWeight="0.5171875" side_tool="true" visible="true" weight="0.17449306" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -452,13 +453,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30882353" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30882353" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915967" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3277311" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3277311" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32983193" />
@@ -596,13 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRUCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
@@ -630,12 +624,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="89" column="46" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
+        <state relative-caret-position="375">
+          <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -33,10 +33,14 @@ public class LFUCache<K, V> {
     }
 
     public LFUCache(int maxCapacity, GetElementListener<K, V> getElementListener) {
+        this(ElementHashMap.DEFAULT_CAPACITY, maxCapacity, getElementListener);
+    }
+
+    public LFUCache(int initCapacity, int maxCapacity, GetElementListener<K, V> getElementListener) {
         if (maxCapacity <= 0) {
             throw new IllegalArgumentException("The argument maxCapacity must greater than zero!");
         }
-        elementsMap = new ElementHashMap<>(maxCapacity, getElementListener);
+        elementsMap = new ElementHashMap<>(initCapacity, maxCapacity, getElementListener);
     }
 
     public void setGetElementListener(GetElementListener<K, V> getElementListener) {
