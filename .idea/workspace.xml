@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405d04f9-cfcd-4dd3-9f09-41ffb728f1ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CacheAlgorithm/src/base/GetElementListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRUCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" beforeDir="false" afterPath="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_KCache.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,9 +17,10 @@
     <session id="1493947114">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.30" value="2" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.55" value="1" />
           <entry key="project.open.time.56" value="1" />
@@ -31,7 +29,7 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.91" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -48,16 +46,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="22" />
+          <entry key="dummy" value="38" />
           <entry key="gitignore" value="16" />
-          <entry key="java" value="18529" />
+          <entry key="java" value="18600" />
           <entry key="txt" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="18529" />
-          <entry key="PLAIN_TEXT" value="86" />
+          <entry key="JAVA" value="18600" />
+          <entry key="PLAIN_TEXT" value="102" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -71,50 +69,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="125" selection-end-column="63" />
+            <state relative-caret-position="-1540">
+              <caret line="389" column="39" selection-start-line="389" selection-start-column="39" selection-end-line="389" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1701#1702#0" expanded="true" />
-                <element signature="e#1751#1752#0" expanded="true" />
-                <element signature="e#14644#14645#0" expanded="true" />
-                <element signature="e#14688#14689#0" expanded="true" />
-                <element signature="e#15686#15687#0" expanded="true" />
-                <element signature="e#15733#15734#0" expanded="true" />
-                <element signature="e#18026#18027#0" expanded="true" />
-                <element signature="e#18049#18050#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-497">
-              <caret line="192" column="47" selection-start-line="192" selection-start-column="47" selection-end-line="192" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#682#683#0" expanded="true" />
-                <element signature="e#1299#1300#0" expanded="true" />
-                <element signature="e#1330#1331#0" expanded="true" />
-                <element signature="e#1363#1364#0" expanded="true" />
-                <element signature="e#1395#1396#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRUCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="250" column="25" selection-start-line="250" selection-start-column="25" selection-end-line="250" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="3" selection-start-column="3" selection-end-column="3" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/AbstractMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="7300">
               <caret line="424" column="36" selection-start-line="424" selection-start-column="36" selection-end-line="424" selection-end-column="36" />
             </state>
           </provider>
@@ -123,17 +111,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/Objects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="640">
               <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java">
+        <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_KCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-720">
-              <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
+            <state relative-caret-position="600">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,7 +141,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="11320">
               <caret line="609" column="13" selection-start-line="609" selection-start-column="13" selection-end-line="609" selection-end-column="13" />
               <folding>
                 <element signature="e#19072#19073#0" expanded="true" />
@@ -235,8 +223,9 @@
         <option value="$PROJECT_DIR$/CacheAlgorithm/src/base/GetElementListener.java" />
         <option value="$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java" />
         <option value="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java" />
-        <option value="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_KCache.java" />
+        <option value="$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java" />
       </list>
     </option>
   </component>
@@ -253,9 +242,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2208" />
-    <option name="y" value="148" />
-    <option name="width" value="1627" />
+    <option name="x" value="2194" />
+    <option name="y" value="451" />
+    <option name="width" value="1617" />
     <option name="height" value="968" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -264,7 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,19 +265,41 @@
               <item name="JavaComponentProject" type="462c0819:PsiDirectoryNode" />
               <item name="CacheAlgorithm" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="JavaComponentProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaComponentProject" type="462c0819:PsiDirectoryNode" />
+              <item name="CacheAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaComponentProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaComponentProject" type="462c0819:PsiDirectoryNode" />
+              <item name="CacheAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lfu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JavaComponentProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JavaComponentProject" type="462c0819:PsiDirectoryNode" />
+              <item name="CacheAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lru" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="Map&#9;FILE&#9;jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/Map.java&#10;WeakHashM&#9;PSI&#9;JAVA://java.util.WeakHashMap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541646851278" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541986859215" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -309,7 +319,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.LRU">
+  <component name="RunManager" selected="Application.LRUCache">
     <configuration name="LFUCache" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lfu.LFUCache" />
       <module name="CacheAlgorithm" />
@@ -336,8 +346,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LRU_K" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lru.LRU_K" />
+    <configuration name="LRUCache" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lru.LRUCache" />
+      <module name="CacheAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lru.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LRU_KCache" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lru.LRU_KCache" />
       <module name="CacheAlgorithm" />
       <extension name="coverage">
         <pattern>
@@ -362,15 +385,17 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.LRU" />
-      <item itemvalue="Application.LRU_K" />
+      <item itemvalue="Application.LRU_KCache" />
       <item itemvalue="Application.LFUCache" />
+      <item itemvalue="Application.LRUCache" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LRU" />
+        <item itemvalue="Application.LRUCache" />
         <item itemvalue="Application.LFUCache" />
-        <item itemvalue="Application.LRU_K" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.LRU" />
+        <item itemvalue="Application.LRU_KCache" />
       </list>
     </recent_temporary>
   </component>
@@ -393,7 +418,9 @@
       <workItem from="1541402919056" duration="587000" />
       <workItem from="1541466344123" duration="596000" />
       <workItem from="1541585371690" duration="6576000" />
-      <workItem from="1541639644352" duration="7126000" />
+      <workItem from="1541639644352" duration="8572000" />
+      <workItem from="1541829574235" duration="783000" />
+      <workItem from="1541986617057" duration="242000" />
     </task>
     <task id="LOCAL-00001" summary="add maxCapacity filed API for LRU-K algorithm">
       <created>1540990684826</created>
@@ -406,14 +433,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76150000" />
+    <option name="totallyTimeSpent" value="78621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4863222" visible="true" weight="0.17129135" />
-      <window_info id="Structure" order="1" sideWeight="0.51367784" side_tool="true" visible="true" weight="0.17129135" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4832827" visible="true" weight="0.17449306" />
+      <window_info id="Structure" order="1" sideWeight="0.5167173" side_tool="true" visible="true" weight="0.17449306" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -421,13 +448,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30882353" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30882353" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915967" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32878152" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3277311" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32983193" />
@@ -520,12 +547,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
           <caret line="437" column="13" selection-start-line="437" selection-start-column="13" selection-end-line="437" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/AbstractMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7300">
+          <caret line="424" column="36" selection-start-line="424" selection-start-column="36" selection-end-line="424" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/Objects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/base/GetElementListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11320">
+          <caret line="609" column="13" selection-start-line="609" selection-start-column="13" selection-end-line="609" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#19667#19668#0" expanded="true" />
-            <element signature="e#19695#19696#0" expanded="true" />
-            <element signature="e#23316#23317#0" expanded="true" />
-            <element signature="e#23372#23373#0" expanded="true" />
+            <element signature="e#19072#19073#0" expanded="true" />
+            <element signature="e#19130#19131#0" expanded="true" />
+            <element signature="e#21076#21077#0" expanded="true" />
+            <element signature="e#21103#21104#0" expanded="true" />
+            <element signature="e#23597#23598#0" expanded="true" />
+            <element signature="e#23651#23652#0" expanded="true" />
+            <element signature="e#24298#24299#0" expanded="true" />
+            <element signature="e#24363#24364#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -541,90 +606,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/base/GetElementListener.java">
+    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_KCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/AbstractMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="424" column="36" selection-start-line="424" selection-start-column="36" selection-end-line="424" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_91/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="609" column="13" selection-start-line="609" selection-start-column="13" selection-end-line="609" selection-end-column="13" />
+        <state relative-caret-position="600">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding>
-            <element signature="e#19072#19073#0" expanded="true" />
-            <element signature="e#19130#19131#0" expanded="true" />
-            <element signature="e#21076#21077#0" expanded="true" />
-            <element signature="e#21103#21104#0" expanded="true" />
-            <element signature="e#23597#23598#0" expanded="true" />
-            <element signature="e#23651#23652#0" expanded="true" />
-            <element signature="e#24298#24299#0" expanded="true" />
-            <element signature="e#24363#24364#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lfu/LFUCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="125" selection-end-column="63" />
+        <state relative-caret-position="-1540">
+          <caret line="389" column="39" selection-start-line="389" selection-start-column="39" selection-end-line="389" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1701#1702#0" expanded="true" />
-            <element signature="e#1751#1752#0" expanded="true" />
-            <element signature="e#14644#14645#0" expanded="true" />
-            <element signature="e#14688#14689#0" expanded="true" />
-            <element signature="e#15686#15687#0" expanded="true" />
-            <element signature="e#15733#15734#0" expanded="true" />
-            <element signature="e#18026#18027#0" expanded="true" />
-            <element signature="e#18049#18050#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU_K.java">
+    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRUCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720">
-          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
+        <state relative-caret-position="497">
+          <caret line="250" column="25" selection-start-line="250" selection-start-column="25" selection-end-line="250" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CacheAlgorithm/src/lru/LRU.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-497">
-          <caret line="192" column="47" selection-start-line="192" selection-start-column="47" selection-end-line="192" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
-            <element signature="e#1299#1300#0" expanded="true" />
-            <element signature="e#1330#1331#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-            <element signature="e#1395#1396#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

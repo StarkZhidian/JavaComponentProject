@@ -12,7 +12,7 @@ import base.GetElementListener;
  * @param <K> 键的类型
  * @param <V> 值的类型
  */
-public class LRU<K, V> implements GetElementListener<K, V> {
+public class LRUCache<K, V> implements GetElementListener<K, V> {
 
     private static final int DEFAULT_MAX_CAPACITY = 32;
     private int maxCapacity;
@@ -23,11 +23,11 @@ public class LRU<K, V> implements GetElementListener<K, V> {
     private int hitCount; // get 方法中元素命中次数
     private int missCount; // get 方法中元素未命中次数
 
-    public LRU() {
+    public LRUCache() {
         this(DEFAULT_MAX_CAPACITY, null);
     }
 
-    public LRU(int maxCapacity, GetElementListener<K, V> getElementListener) {
+    public LRUCache(int maxCapacity, GetElementListener<K, V> getElementListener) {
         if (maxCapacity <= 0) {
             throw new IllegalArgumentException("maxCapacity must greater than zero!");
         }
@@ -246,9 +246,9 @@ public class LRU<K, V> implements GetElementListener<K, V> {
     }
 
     public static void main(String[] args) {
-        LRU<Integer, String> lru;
+        LRUCache<Integer, String> lru;
         for (int x = 1; x < 12; x ++) {
-            lru = new LRU<Integer, String>(x, null);
+            lru = new LRUCache<Integer, String>(x, null);
             for (int i = 0; i < 10; i++) {
                 lru.add(i, String.valueOf(i));
                 System.out.println(lru);

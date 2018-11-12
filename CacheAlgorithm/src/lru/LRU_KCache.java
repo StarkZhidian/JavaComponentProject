@@ -28,7 +28,7 @@ import base.GetElementListener;
  * 基于上述，建议使用 lru_k.entrySet() 方法来先得到整个键值对的集合迭代器，再进行键值遍历
  */
 @SuppressWarnings("unchecked")
-public class LRU_K<K, V> extends LinkedHashMap<K, V> implements GetElementListener<K, V> {
+public class LRU_KCache<K, V> extends LinkedHashMap<K, V> implements GetElementListener<K, V> {
 
     private static final int DEFAULT_K = 2;
     private static final int DEFAULT_MAX_CAPACITY = 32;
@@ -40,11 +40,11 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> implements GetElementListen
     private int hitCount;
     private int missCount;
 
-    public LRU_K() {
+    public LRU_KCache() {
         this(DEFAULT_MAX_CAPACITY, DEFAULT_K, DEFAULT_CACHE_QUEUE_MAX_CAPACITY, null);
     }
 
-    public LRU_K(int maxCapacity, int k, int cacheQueueCapacity, GetElementListener<K, V> getElementListener) {
+    public LRU_KCache(int maxCapacity, int k, int cacheQueueCapacity, GetElementListener<K, V> getElementListener) {
         super(maxCapacity, DEFAULT_LOAD_FACTOR, true);
         if (maxCapacity <= 0) {
             throw new IllegalArgumentException("maxCapacity must greater than zero!");
@@ -174,7 +174,7 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> implements GetElementListen
 
         protected void addToLRU(Map.Entry<K, V> element) {
             remove(element);
-            LRU_K.this.put(element.getKey(), element.getValue());
+            LRU_KCache.this.put(element.getKey(), element.getValue());
         }
 
     }
@@ -229,7 +229,7 @@ public class LRU_K<K, V> extends LinkedHashMap<K, V> implements GetElementListen
     }
 
     public static void main(String[] args) {
-        LRU_K<Integer, String> lru_k = new LRU_K<Integer, String>(3, 3, 9, null);
+        LRU_KCache<Integer, String> lru_k = new LRU_KCache<Integer, String>(3, 3, 9, null);
         for (int i = 0; i < 10; i++) {
             lru_k.add(i, String.valueOf(i));
         }
