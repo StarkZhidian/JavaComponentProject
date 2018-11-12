@@ -2,7 +2,6 @@ package lfu;
 
 import java.util.AbstractMap;
 import java.util.AbstractSet;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -87,6 +86,7 @@ public class LFUCache<K, V> {
     static class ElementHashMap<K, V> extends AbstractMap<K, V> implements GetElementListener<K, V> {
         static final float DEFAULT_FACTOR = 0.75F;
         static final int MAX_CAPACITY = 1 << 30;
+        static final int DEFAULT_CAPACITY = 16;
         int maxCapacity;
         int size;
         Element<K, V>[] tables;
@@ -99,15 +99,20 @@ public class LFUCache<K, V> {
         private int missCount; // get 元素没有命中的次数
 
         ElementHashMap(int maxCapacity, GetElementListener<K, V> getElementListener) {
-            if (maxCapacity <= 0) {
-                throw new IllegalArgumentException("The argument maxCapacity must greater than zero!");
+            this(DEFAULT_CAPACITY, maxCapacity, getElementListener);
+        }
+
+        ElementHashMap(int initCapacity, int maxCapacity, GetElementListener<K, V> getElementListener) {
+            if (initCapacity <= 0 || maxCapacity <= 0) {
+                throw new IllegalArgumentException(
+                        "The argument initCapacity and maxCapacity must greater than zero!");
             }
-            if (maxCapacity > MAX_CAPACITY) {
-                maxCapacity = MAX_CAPACITY;
-            }
+            maxCapacity = maxCapacity > MAX_CAPACITY ? MAX_CAPACITY : maxCapacity;
+            initCapacity = initCapacity > maxCapacity ? maxCapacity : initCapacity;
             this.maxCapacity = maxCapacity;
-            elementVisitTimes = new HashMap<K, Integer>(maxCapacity);
-            tables = (Element<K, V>[]) new Element[tableSizeFor(maxCapacity)];
+            initCapacity = tableSizeFor(initCapacity);
+            elementVisitTimes = new HashMap<K, Integer>(initCapacity);
+            tables = (Element<K, V>[]) new Element[initCapacity];
             this.getElementListener = getElementListener;
         }
 
