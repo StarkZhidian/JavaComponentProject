@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405d04f9-cfcd-4dd3-9f09-41ffb728f1ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PropertiesUtils/src/Properties.java" beforeDir="false" afterPath="$PROJECT_DIR$/PropertiesUtils/src/Properties.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,24 +20,27 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PropertiesUtils/src/Properties.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+            <state relative-caret-position="243">
+              <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Properties#0" expanded="true" />
-                <element signature="e#1456#1457#0" expanded="true" />
-                <element signature="e#1499#1500#0" expanded="true" />
-                <element signature="e#1548#1549#0" expanded="true" />
-                <element signature="e#1591#1592#0" expanded="true" />
-                <element signature="e#3279#3280#0" expanded="true" />
+                <element signature="docComment;method#load#0;class#Properties#0" expanded="true" />
+                <element signature="docComment;method#load#1;class#Properties#0" expanded="true" />
+                <element signature="docComment;method#load#2;class#Properties#0" expanded="true" />
+                <element signature="docComment;method#load#3;class#Properties#0" expanded="true" />
+                <element signature="e#1809#1810#0" expanded="true" />
+                <element signature="e#1852#1853#0" expanded="true" />
+                <element signature="e#2088#2089#0" expanded="true" />
+                <element signature="e#2131#2132#0" expanded="true" />
+                <element signature="docComment;method#save#0;class#Properties#0" expanded="true" />
+                <element signature="docComment;method#save#1;class#Properties#0" expanded="true" />
+                <element signature="docComment;method#save#2;class#Properties#0" expanded="true" />
+                <element signature="e#4030#4031#0" expanded="true" />
+                <element signature="e#4065#4066#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PropertiesUtils/properties.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -635,16 +637,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PropertiesUtils/src/Properties.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+        <state relative-caret-position="243">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Properties#0" expanded="true" />
-            <element signature="e#1456#1457#0" expanded="true" />
-            <element signature="e#1499#1500#0" expanded="true" />
-            <element signature="e#1548#1549#0" expanded="true" />
-            <element signature="e#1591#1592#0" expanded="true" />
-            <element signature="e#3279#3280#0" expanded="true" />
+            <element signature="docComment;method#load#0;class#Properties#0" expanded="true" />
+            <element signature="docComment;method#load#1;class#Properties#0" expanded="true" />
+            <element signature="docComment;method#load#2;class#Properties#0" expanded="true" />
+            <element signature="docComment;method#load#3;class#Properties#0" expanded="true" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#2088#2089#0" expanded="true" />
+            <element signature="e#2131#2132#0" expanded="true" />
+            <element signature="docComment;method#save#0;class#Properties#0" expanded="true" />
+            <element signature="docComment;method#save#1;class#Properties#0" expanded="true" />
+            <element signature="docComment;method#save#2;class#Properties#0" expanded="true" />
+            <element signature="e#4030#4031#0" expanded="true" />
+            <element signature="e#4065#4066#0" expanded="true" />
           </folding>
         </state>
       </provider>
