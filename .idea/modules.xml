@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CacheAlgorithm/CacheAlgorithm.iml" filepath="$PROJECT_DIR$/CacheAlgorithm/CacheAlgorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaComponentProject.iml" filepath="$PROJECT_DIR$/JavaComponentProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PropertiesUtils/PropertiesUtils.iml" filepath="$PROJECT_DIR$/PropertiesUtils/PropertiesUtils.iml" />
     </modules>
   </component>
 </project>
