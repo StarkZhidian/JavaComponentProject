@@ -57,6 +57,11 @@ public class Properties {
         return propertyMap.get(key);
     }
 
+    public String[] getValues(String key, String separator) {
+        String value = get(key);
+        return (value == null || separator == null) ? null : value.split(separator);
+    }
+
     public void put(String key, String value) {
         propertyMap.put(key, value);
     }
@@ -127,6 +132,7 @@ public class Properties {
             keyValue[2 * i] = "" + i;
             keyValue[2 * i + 1] = "" + (i + 1);
         }
+        keyValue[1] = "1, 2, 3, 4, 5";
         Properties properties = new Properties();
         properties.load(keyValue);
 //        for (int t = 0; t < 10; t++) {
